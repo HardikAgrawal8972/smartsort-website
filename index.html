@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartSort — IoT-Powered E-Waste Recycling Kiosks for India's Cities</title>
+  <meta name="description"
+    content="SmartSort deploys AI-powered, IoT-connected e-waste kiosks across Indian urban areas. Scan, drop, and earn rewards while making cities cleaner." />
+  <meta name="keywords" content="e-waste recycling, IoT kiosk, smart city, India, circular economy, AI sorting" />
+  <meta name="author" content="SmartSort" />
+  <meta property="og:title" content="SmartSort — Smarter E-Waste. Cleaner Cities." />
+  <meta property="og:description"
+    content="AI-powered e-waste kiosks making responsible recycling effortless in Indian cities." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+
+  <!-- Phosphor Icons (lightweight, flexible icon set) -->
+  <script src="https://unpkg.com/@phosphor-icons/web@2.0.3"></script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <!-- ==================== NAVIGATION ==================== -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <a href="#" class="nav-logo" aria-label="SmartSort Home">
+        <span class="nav-logo-icon"><i class="ph-fill ph-recycle"></i></span>
+        SmartSort
+      </a>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#how-it-works">How It Works</a>
+        <a href="#technology">Technology</a>
+        <a href="#impact">Impact</a>
+        <a href="#deployment">Locations</a>
+        <a href="#partners">Partners</a>
+        <button class="nav-cta" id="nav-cta-btn">Find a Kiosk</button>
+      </div>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ==================== HERO ==================== -->
+  <section class="hero" id="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-orb hero-orb--green"></div>
+    <div class="hero-orb hero-orb--teal"></div>
+
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge reveal">
+          <span class="dot"></span>
+          Now live in 12+ cities
+        </div>
+
+        <h1 class="hero-title reveal reveal-delay-1">
+          Smarter E-Waste.<br />
+          <span class="gradient-text">Cleaner Cities.</span>
+        </h1>
+
+        <p class="hero-subtitle reveal reveal-delay-2">
+          India's first AI-powered, IoT-connected kiosk network turning electronic waste into rewards — making
+          responsible disposal effortless for every citizen.
+        </p>
+
+        <div class="hero-actions reveal reveal-delay-3">
+          <button class="btn-primary" id="hero-cta-btn">
+            <i class="ph-bold ph-map-pin"></i>
+            Find a Kiosk
+          </button>
+          <button class="btn-secondary" id="hero-learn-btn">
+            <i class="ph-bold ph-play-circle"></i>
+            Watch Demo
+          </button>
+        </div>
+
+        <div class="hero-stats reveal reveal-delay-4">
+          <div class="hero-stat">
+            <span class="hero-stat-value counter" data-target="50000">0</span>
+            <span class="hero-stat-label">Devices Recycled</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-value counter" data-target="200" data-suffix="+">0</span>
+            <span class="hero-stat-label">Active Kiosks</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-value counter" data-target="12">0</span>
+            <span class="hero-stat-label">Cities Live</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal reveal-delay-2">
+        <div class="hero-image-wrapper">
+          <img src="hero-kiosk.png" alt="SmartSort IoT e-waste kiosk in a modern setting" width="520" height="520" />
+        </div>
+
+        <!-- Floating badges -->
+        <div class="hero-float-badge hero-float-badge--ai">
+          <span class="badge-icon"><i class="ph-fill ph-brain"></i></span>
+          AI Classification
+        </div>
+        <div class="hero-float-badge hero-float-badge--iot">
+          <span class="badge-icon"><i class="ph-fill ph-cpu"></i></span>
+          IoT Connected
+        </div>
+        <div class="hero-float-badge hero-float-badge--reward">
+          <span class="badge-icon"><i class="ph-fill ph-coins"></i></span>
+          Instant Rewards
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== HOW IT WORKS ==================== -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">How It Works</span>
+        <h2 class="section-title">Recycle in <span class="highlight">4 Simple Steps</span></h2>
+        <p class="section-subtitle">
+          From scan to reward in under 60 seconds — responsible e-waste disposal has never been this easy.
+        </p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card reveal reveal-delay-1">
+          <div class="step-number">
+            <i class="ph-duotone ph-qr-code" style="font-size:2.2rem; color: var(--teal);"></i>
+            <span class="step-number-text">1</span>
+          </div>
+          <h3 class="step-title">Scan QR Code</h3>
+          <p class="step-desc">Open the SmartSort app or scan the QR code on any kiosk to authenticate and begin your
+            drop-off session.</p>
+        </div>
+
+        <div class="step-card reveal reveal-delay-2">
+          <div class="step-number">
+            <i class="ph-duotone ph-package" style="font-size:2.2rem; color: var(--green);"></i>
+            <span class="step-number-text">2</span>
+          </div>
+          <h3 class="step-title">Drop Your Device</h3>
+          <p class="step-desc">Place your old phone, charger, battery, or small electronic into the kiosk's secure
+            intake compartment.</p>
+        </div>
+
+        <div class="step-card reveal reveal-delay-3">
+          <div class="step-number">
+            <i class="ph-duotone ph-brain" style="font-size:2.2rem; color: var(--teal);"></i>
+            <span class="step-number-text">3</span>
+          </div>
+          <h3 class="step-title">AI Sorts It</h3>
+          <p class="step-desc">On-device TensorFlow Lite models classify the e-waste type, assess weight, and route it
+            to the correct bin in real time.</p>
+        </div>
+
+        <div class="step-card reveal reveal-delay-4">
+          <div class="step-number">
+            <i class="ph-duotone ph-trophy" style="font-size:2.2rem; color: #facc15;"></i>
+            <span class="step-number-text">4</span>
+          </div>
+          <h3 class="step-title">Earn Rewards</h3>
+          <p class="step-desc">Receive SmartSort credits instantly — redeem them at partner stores or donate to
+            environmental causes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== TECHNOLOGY ==================== -->
+  <section class="technology" id="technology">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Our Stack</span>
+        <h2 class="section-title">Built on <span class="highlight">Open Technology</span></h2>
+        <p class="section-subtitle">
+          A robust, edge-first architecture designed for reliability in Indian urban conditions.
+        </p>
+      </div>
+
+      <div class="tech-grid">
+        <div class="tech-card reveal reveal-delay-1">
+          <div class="tech-icon tech-icon--green">
+            <i class="ph-fill ph-cpu"></i>
+          </div>
+          <h3>Raspberry Pi 4 Edge Node</h3>
+          <p>Each kiosk runs a Raspberry Pi 4 as its brain — handling inference, sensor data, and cloud sync with
+            minimal power draw.</p>
+        </div>
+
+        <div class="tech-card reveal reveal-delay-2">
+          <div class="tech-icon tech-icon--teal">
+            <i class="ph-fill ph-brain"></i>
+          </div>
+          <h3>TensorFlow Lite AI</h3>
+          <p>On-device classification of 20+ e-waste categories using quantized TFLite models optimized for edge
+            inference at 15 FPS.</p>
+        </div>
+
+        <div class="tech-card reveal reveal-delay-3">
+          <div class="tech-icon tech-icon--green">
+            <i class="ph-fill ph-database"></i>
+          </div>
+          <h3>Firebase Cloud Platform</h3>
+          <p>Real-time database sync, user authentication, cloud functions, and analytics — all powered by Firebase for
+            99.9% uptime.</p>
+        </div>
+
+        <div class="tech-card reveal reveal-delay-4">
+          <div class="tech-icon tech-icon--teal">
+            <i class="ph-fill ph-qr-code"></i>
+          </div>
+          <h3>QR & RFID Authentication</h3>
+          <p>Dual-mode auth ensures every drop-off is tracked. QR for app users, RFID for institutional deployments and
+            repeat visitors.</p>
+        </div>
+
+        <div class="tech-card reveal reveal-delay-5">
+          <div class="tech-icon tech-icon--green">
+            <i class="ph-fill ph-scales"></i>
+          </div>
+          <h3>Load Cell Sensors</h3>
+          <p>Precision weight measurement validates each item, helps detect fraud, and provides accurate recycling
+            metrics.</p>
+        </div>
+
+        <div class="tech-card reveal reveal-delay-6">
+          <div class="tech-icon tech-icon--teal">
+            <i class="ph-fill ph-wifi-high"></i>
+          </div>
+          <h3>Wi-Fi & GSM Connectivity</h3>
+          <p>Dual-band connectivity with automatic failover ensures kiosks stay online even in areas with intermittent
+            Wi-Fi coverage.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== IMPACT ==================== -->
+  <section class="impact" id="impact">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Why It Matters</span>
+        <h2 class="section-title">Driving <span class="highlight">Real Impact</span></h2>
+        <p class="section-subtitle">
+          Every device recycled through SmartSort contributes to a cleaner, more circular economy.
+        </p>
+      </div>
+
+      <div class="impact-grid">
+        <div class="impact-card reveal reveal-delay-1">
+          <div class="impact-icon impact-icon--green">
+            <i class="ph-fill ph-trash"></i>
+          </div>
+          <div>
+            <span class="impact-stat counter" data-target="95" data-suffix="%">0</span>
+            <h3>Landfill Prevention</h3>
+            <p>Of collected e-waste is diverted from landfills and routed to authorized recyclers, preventing soil and
+              water contamination.</p>
+          </div>
+        </div>
+
+        <div class="impact-card reveal reveal-delay-2">
+          <div class="impact-icon impact-icon--teal">
+            <i class="ph-fill ph-arrows-clockwise"></i>
+          </div>
+          <div>
+            <span class="impact-stat counter" data-target="80" data-suffix="%">0</span>
+            <h3>Circular Economy Recovery</h3>
+            <p>Materials like copper, gold, lithium, and rare earth elements are recovered and fed back into
+              manufacturing supply chains.</p>
+          </div>
+        </div>
+
+        <div class="impact-card reveal reveal-delay-3">
+          <div class="impact-icon impact-icon--green">
+            <i class="ph-fill ph-chart-line-up"></i>
+          </div>
+          <div>
+            <span class="impact-stat">Real-Time</span>
+            <h3>Logistics Intelligence</h3>
+            <p>Live dashboards track fill levels, pickup schedules, and recycling metrics — optimizing collection routes
+              and reducing emissions.</p>
+          </div>
+        </div>
+
+        <div class="impact-card reveal reveal-delay-4">
+          <div class="impact-icon impact-icon--teal">
+            <i class="ph-fill ph-game-controller"></i>
+          </div>
+          <div>
+            <span class="impact-stat counter" data-target="3" data-suffix="x">0</span>
+            <h3>Gamified Engagement</h3>
+            <p>Leaderboards, streak bonuses, and redeemable credits drive 3x higher participation versus traditional
+              collection drives.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== DEPLOYMENT ==================== -->
+  <section class="deployment" id="deployment">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Where We Deploy</span>
+        <h2 class="section-title">Kiosks in <span class="highlight">High-Traffic Zones</span></h2>
+        <p class="section-subtitle">
+          Strategically placed where people live, work, shop, and study — maximizing convenience and collection volume.
+        </p>
+      </div>
+
+      <div class="deployment-grid">
+        <div class="deployment-card reveal reveal-delay-1">
+          <div class="deployment-icon">
+            <i class="ph-duotone ph-storefront"></i>
+          </div>
+          <h3>Shopping Malls</h3>
+          <p>High footfall retail environments where consumers are already upgrading their devices.</p>
+        </div>
+
+        <div class="deployment-card reveal reveal-delay-2">
+          <div class="deployment-icon">
+            <i class="ph-duotone ph-graduation-cap"></i>
+          </div>
+          <h3>Colleges & Universities</h3>
+          <p>Tech-savvy student populations driving peer-to-peer adoption and awareness campaigns.</p>
+        </div>
+
+        <div class="deployment-card reveal reveal-delay-3">
+          <div class="deployment-icon">
+            <i class="ph-duotone ph-buildings"></i>
+          </div>
+          <h3>Residential Societies</h3>
+          <p>Gated communities and housing complexes with dedicated kiosk zones for daily convenience.</p>
+        </div>
+
+        <div class="deployment-card reveal reveal-delay-4">
+          <div class="deployment-icon">
+            <i class="ph-duotone ph-desktop-tower"></i>
+          </div>
+          <h3>IT Parks & Offices</h3>
+          <p>Corporate campuses with high device turnover and CSR-aligned sustainability goals.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PARTNERS ==================== -->
+  <section class="partners" id="partners">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Our Ecosystem</span>
+        <h2 class="section-title">Trusted <span class="highlight">Partnerships</span></h2>
+        <p class="section-subtitle">
+          Collaborating with government bodies, recyclers, and enterprises to scale responsible e-waste management.
+        </p>
+      </div>
+
+      <div class="partners-grid">
+        <div class="partner-card reveal reveal-delay-1">
+          <div class="partner-icon partner-icon--1">
+            <i class="ph-fill ph-flag-banner"></i>
+          </div>
+          <h3>Smart Cities Mission</h3>
+          <p>Aligned with India's Smart Cities Mission for sustainable urban infrastructure and digital governance.</p>
+        </div>
+
+        <div class="partner-card reveal reveal-delay-2">
+          <div class="partner-icon partner-icon--2">
+            <i class="ph-fill ph-shield-check"></i>
+          </div>
+          <h3>EPR Compliance</h3>
+          <p>Helping producers meet Extended Producer Responsibility targets with verified collection and recycling
+            data.</p>
+        </div>
+
+        <div class="partner-card reveal reveal-delay-3">
+          <div class="partner-icon partner-icon--3">
+            <i class="ph-fill ph-recycle"></i>
+          </div>
+          <h3>Authorized Recyclers</h3>
+          <p>Partnered with CPCB-authorized recyclers ensuring every gram is processed per environmental regulations.
+          </p>
+        </div>
+
+        <div class="partner-card reveal reveal-delay-4">
+          <div class="partner-icon partner-icon--4">
+            <i class="ph-fill ph-shopping-bag"></i>
+          </div>
+          <h3>Retail Chains</h3>
+          <p>Credit redemption partnerships with major retail and e-commerce brands drive consumer participation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CTA ==================== -->
+  <section class="cta-section" id="cta">
+    <div class="container">
+      <div class="cta-inner reveal">
+        <h2 class="cta-title">Ready to make your city <span class="gradient-text">smarter</span>?</h2>
+        <p class="cta-subtitle">
+          Whether you're a civic body, enterprise, or campus — bring SmartSort to your location.
+        </p>
+        <div class="cta-buttons">
+          <button class="btn-primary" id="cta-partner-btn">
+            <i class="ph-bold ph-handshake"></i>
+            Become a Partner
+          </button>
+          <button class="btn-secondary" id="cta-kiosk-btn">
+            <i class="ph-bold ph-map-pin"></i>
+            Find a Kiosk Near You
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer" id="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-logo">
+            <span class="footer-logo-icon"><i class="ph-fill ph-recycle"></i></span>
+            SmartSort
+          </div>
+          <p class="footer-tagline" style="margin-top:0.5rem;">
+            Turning electronic waste into opportunity — one kiosk at a time.
+          </p>
+        </div>
+
+        <div class="footer-links">
+          <a href="#how-it-works">How It Works</a>
+          <a href="#technology">Technology</a>
+          <a href="#impact">Impact</a>
+          <a href="#deployment">Locations</a>
+          <a href="#partners">Partners</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copyright">
+          Developed by <strong>Hardik Agrawal</strong>
+        </p>
+        <div class="footer-social">
+          <a href="https://github.com/HardikAgrawal8972" target="_blank" rel="noopener noreferrer"
+            aria-label="GitHub"><i class="ph-fill ph-github-logo"></i></a>
+          <a href="https://www.linkedin.com/in/hardik-agrawal-802641317/" target="_blank" rel="noopener noreferrer"
+            aria-label="LinkedIn"><i class="ph-fill ph-linkedin-logo"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+
+</html>
