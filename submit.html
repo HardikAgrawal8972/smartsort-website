@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Drop Off E-Waste — SmartSort</title>
+    <meta name="description"
+        content="Submit your electronic waste for responsible recycling through SmartSort's AI-powered kiosk network. Earn rewards while keeping cities clean." />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web@2.0.3"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+    <!-- ==================== NAVIGATION ==================== -->
+    <nav class="navbar scrolled" id="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <a href="index.html" class="nav-logo" aria-label="SmartSort Home">
+                <span class="nav-logo-icon"><i class="ph-fill ph-recycle"></i></span>
+                SmartSort
+            </a>
+
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="index.html#how-it-works">How It Works</a>
+                <a href="index.html#technology">Technology</a>
+                <a href="index.html#impact">Impact</a>
+                <button class="nav-cta" onclick="window.location.href='submit.html'">Drop Off E-Waste</button>
+            </div>
+
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ==================== SUBMISSION FORM ==================== -->
+    <section class="submit-page" id="submit-page">
+        <div class="submit-bg-grid"></div>
+        <div class="submit-orb submit-orb--green"></div>
+        <div class="submit-orb submit-orb--teal"></div>
+
+        <div class="container">
+            <div class="submit-header">
+                <span class="section-label">E-Waste Drop Off</span>
+                <h1 class="section-title">Submit Your <span class="highlight">E-Waste</span></h1>
+                <p class="section-subtitle">Complete the form below to schedule your responsible e-waste drop-off and
+                    earn
+                    rewards.</p>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="form-progress" id="formProgress">
+                <div class="progress-track">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-steps">
+                    <div class="progress-step active" data-step="1">
+                        <div class="progress-step-circle">
+                            <i class="ph-bold ph-user"></i>
+                        </div>
+                        <span class="progress-step-label">Your Info</span>
+                    </div>
+                    <div class="progress-step" data-step="2">
+                        <div class="progress-step-circle">
+                            <i class="ph-bold ph-device-mobile"></i>
+                        </div>
+                        <span class="progress-step-label">Device</span>
+                    </div>
+                    <div class="progress-step" data-step="3">
+                        <div class="progress-step-circle">
+                            <i class="ph-bold ph-check-circle"></i>
+                        </div>
+                        <span class="progress-step-label">Review</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form Container -->
+            <div class="form-container" id="formContainer">
+                <form id="ewasteForm" novalidate>
+
+                    <!-- ===== STEP 1 — User Authentication ===== -->
+                    <div class="form-step active" id="step1">
+                        <div class="form-step-header">
+                            <div class="form-step-icon form-step-icon--green">
+                                <i class="ph-fill ph-user-circle"></i>
+                            </div>
+                            <div>
+                                <h2 class="form-step-title">Your Information</h2>
+                                <p class="form-step-desc">Let us know who you are so we can assign your rewards.</p>
+                            </div>
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="fullName">Full Name <span class="required">*</span></label>
+                                <div class="input-wrapper">
+                                    <i class="ph ph-user input-icon"></i>
+                                    <input type="text" id="fullName" name="fullName" placeholder="e.g. Hardik Agrawal"
+                                        required autocomplete="name" />
+                                </div>
+                                <span class="form-error" id="fullNameError"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Phone Number <span class="required">*</span></label>
+                                <div class="input-wrapper">
+                                    <i class="ph ph-phone input-icon"></i>
+                                    <input type="tel" id="phone" name="phone" placeholder="e.g. 9876543210" required
+                                        maxlength="10" pattern="[0-9]{10}" autocomplete="tel" />
+                                </div>
+                                <span class="form-error" id="phoneError"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email Address <span class="required">*</span></label>
+                                <div class="input-wrapper">
+                                    <i class="ph ph-envelope input-icon"></i>
+                                    <input type="email" id="email" name="email" placeholder="e.g. hardik@smartsort.in"
+                                        required autocomplete="email" />
+                                </div>
+                                <span class="form-error" id="emailError"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="city">City / Location <span class="required">*</span></label>
+                                <div class="input-wrapper">
+                                    <i class="ph ph-map-pin input-icon"></i>
+                                    <select id="city" name="city" required>
+                                        <option value="" disabled selected>Select deployment area</option>
+                                        <option value="Mall">Mall</option>
+                                        <option value="College">College</option>
+                                        <option value="Residential Society">Residential Society</option>
+                                        <option value="IT Park">IT Park</option>
+                                    </select>
+                                </div>
+                                <span class="form-error" id="cityError"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <div></div>
+                            <button type="button" class="btn-primary form-next" id="nextStep1">
+                                Next: Device Details
+                                <i class="ph-bold ph-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- ===== STEP 2 — Device Details ===== -->
+                    <div class="form-step" id="step2">
+                        <div class="form-step-header">
+                            <div class="form-step-icon form-step-icon--teal">
+                                <i class="ph-fill ph-device-mobile"></i>
+                            </div>
+                            <div>
+                                <h2 class="form-step-title">Device Details</h2>
+                                <p class="form-step-desc">Tell us about the device you'd like to drop off.</p>
+                            </div>
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="deviceType">Device Type <span class="required">*</span></label>
+                                <div class="input-wrapper">
+                                    <i class="ph ph-devices input-icon"></i>
+                                    <select id="deviceType" name="deviceType" required>
+                                        <option value="" disabled selected>Select device type</option>
+                                        <option value="Mobile Phone">Mobile Phone</option>
+                                        <option value="Laptop">Laptop</option>
+                                        <option value="Tablet">Tablet</option>
+                                        <option value="Battery">Battery</option>
+                                        <option value="Charger/Cable">Charger / Cable</option>
+                                        <option value="PCB / Circuit Board">PCB / Circuit Board</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                                <span class="form-error" id="deviceTypeError"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="brand">Brand <span class="required">*</span></label>
+                                <div class="input-wrapper">
+                                    <i class="ph ph-tag input-icon"></i>
+                                    <input type="text" id="brand" name="brand" placeholder="e.g. Samsung, Apple, Dell"
+                                        required />
+                                </div>
+                                <span class="form-error" id="brandError"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="weight">Approximate Weight (grams) <span class="required">*</span></label>
+                                <div class="input-wrapper">
+                                    <i class="ph ph-scales input-icon"></i>
+                                    <input type="number" id="weight" name="weight" placeholder="e.g. 180" required
+                                        min="1" max="50000" />
+                                </div>
+                                <span class="form-error" id="weightError"></span>
+                            </div>
+
+                            <div class="form-group form-group--full">
+                                <label>Device Condition <span class="required">*</span></label>
+                                <div class="radio-group" id="conditionGroup">
+                                    <label class="radio-card">
+                                        <input type="radio" name="condition" value="Working" required />
+                                        <div class="radio-card-inner">
+                                            <i class="ph-fill ph-check-circle radio-card-icon"
+                                                style="color: var(--green);"></i>
+                                            <span class="radio-card-label">Working</span>
+                                            <span class="radio-card-desc">Device powers on and functions</span>
+                                        </div>
+                                    </label>
+                                    <label class="radio-card">
+                                        <input type="radio" name="condition" value="Partially Working" required />
+                                        <div class="radio-card-inner">
+                                            <i class="ph-fill ph-warning-circle radio-card-icon"
+                                                style="color: #eab308;"></i>
+                                            <span class="radio-card-label">Partially Working</span>
+                                            <span class="radio-card-desc">Some functions still work</span>
+                                        </div>
+                                    </label>
+                                    <label class="radio-card">
+                                        <input type="radio" name="condition" value="Not Working" required />
+                                        <div class="radio-card-inner">
+                                            <i class="ph-fill ph-x-circle radio-card-icon" style="color: #ef4444;"></i>
+                                            <span class="radio-card-label">Not Working</span>
+                                            <span class="radio-card-desc">Device is completely dead</span>
+                                        </div>
+                                    </label>
+                                </div>
+                                <span class="form-error" id="conditionError"></span>
+                            </div>
+
+                            <div class="form-group form-group--full">
+                                <label for="devicePhoto">Upload a Photo of the Device</label>
+                                <div class="upload-zone" id="uploadZone">
+                                    <input type="file" id="devicePhoto" name="devicePhoto" accept="image/*"
+                                        class="upload-input" />
+                                    <div class="upload-placeholder" id="uploadPlaceholder">
+                                        <i class="ph-duotone ph-camera"
+                                            style="font-size: 2.5rem; color: var(--teal);"></i>
+                                        <p>Click or drag to upload a photo</p>
+                                        <span>PNG, JPG, WEBP up to 5MB</span>
+                                    </div>
+                                    <div class="upload-preview" id="uploadPreview" style="display:none;">
+                                        <img id="previewImage" alt="Device preview" />
+                                        <button type="button" class="upload-remove" id="removePhoto"
+                                            title="Remove photo">
+                                            <i class="ph-bold ph-x"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn-secondary form-prev" id="prevStep2">
+                                <i class="ph-bold ph-arrow-left"></i>
+                                Back
+                            </button>
+                            <button type="button" class="btn-primary form-next" id="nextStep2">
+                                Next: Review & Submit
+                                <i class="ph-bold ph-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- ===== STEP 3 — Review & Submit ===== -->
+                    <div class="form-step" id="step3">
+                        <div class="form-step-header">
+                            <div class="form-step-icon form-step-icon--green">
+                                <i class="ph-fill ph-clipboard-text"></i>
+                            </div>
+                            <div>
+                                <h2 class="form-step-title">Review & Submit</h2>
+                                <p class="form-step-desc">Check your details before submitting.</p>
+                            </div>
+                        </div>
+
+                        <!-- Summary Card -->
+                        <div class="review-card">
+                            <div class="review-section">
+                                <h3 class="review-section-title">
+                                    <i class="ph-fill ph-user"></i> User Information
+                                </h3>
+                                <div class="review-grid">
+                                    <div class="review-item">
+                                        <span class="review-label">Name</span>
+                                        <span class="review-value" id="reviewName">—</span>
+                                    </div>
+                                    <div class="review-item">
+                                        <span class="review-label">Phone</span>
+                                        <span class="review-value" id="reviewPhone">—</span>
+                                    </div>
+                                    <div class="review-item">
+                                        <span class="review-label">Email</span>
+                                        <span class="review-value" id="reviewEmail">—</span>
+                                    </div>
+                                    <div class="review-item">
+                                        <span class="review-label">Location</span>
+                                        <span class="review-value" id="reviewCity">—</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="review-divider"></div>
+
+                            <div class="review-section">
+                                <h3 class="review-section-title">
+                                    <i class="ph-fill ph-device-mobile"></i> Device Information
+                                </h3>
+                                <div class="review-grid">
+                                    <div class="review-item">
+                                        <span class="review-label">Device Type</span>
+                                        <span class="review-value" id="reviewDevice">—</span>
+                                    </div>
+                                    <div class="review-item">
+                                        <span class="review-label">Brand</span>
+                                        <span class="review-value" id="reviewBrand">—</span>
+                                    </div>
+                                    <div class="review-item">
+                                        <span class="review-label">Weight</span>
+                                        <span class="review-value" id="reviewWeight">—</span>
+                                    </div>
+                                    <div class="review-item">
+                                        <span class="review-label">Condition</span>
+                                        <span class="review-value" id="reviewCondition">—</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="review-divider"></div>
+
+                            <!-- Bin Assignment -->
+                            <div class="review-section">
+                                <h3 class="review-section-title">
+                                    <i class="ph-fill ph-recycle"></i> Bin Assignment
+                                </h3>
+                                <div class="bin-assignment" id="binAssignment">
+                                    <div class="bin-card" id="binCard">
+                                        <div class="bin-icon" id="binIcon">
+                                            <i class="ph-fill ph-recycle"></i>
+                                        </div>
+                                        <div>
+                                            <span class="bin-label" id="binLabel">—</span>
+                                            <span class="bin-desc" id="binDesc">—</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="review-divider"></div>
+
+                            <!-- Impact Estimates -->
+                            <div class="review-section">
+                                <h3 class="review-section-title">
+                                    <i class="ph-fill ph-leaf"></i> Estimated Impact
+                                </h3>
+                                <div class="impact-estimates">
+                                    <div class="impact-estimate-card">
+                                        <div class="impact-estimate-icon impact-estimate-icon--green">
+                                            <i class="ph-fill ph-cloud"></i>
+                                        </div>
+                                        <div>
+                                            <span class="impact-estimate-value" id="reviewCO2">—</span>
+                                            <span class="impact-estimate-label">CO₂ Offset</span>
+                                        </div>
+                                    </div>
+                                    <div class="impact-estimate-card">
+                                        <div class="impact-estimate-icon impact-estimate-icon--teal">
+                                            <i class="ph-fill ph-coins"></i>
+                                        </div>
+                                        <div>
+                                            <span class="impact-estimate-value" id="reviewPoints">—</span>
+                                            <span class="impact-estimate-label">Reward Points</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn-secondary form-prev" id="prevStep3">
+                                <i class="ph-bold ph-arrow-left"></i>
+                                Back
+                            </button>
+                            <button type="submit" class="btn-primary btn-submit" id="submitBtn">
+                                <i class="ph-bold ph-paper-plane-tilt"></i>
+                                <span id="submitBtnText">Submit E-Waste</span>
+                                <div class="btn-spinner" id="submitSpinner" style="display:none;"></div>
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+
+                <!-- ===== SUCCESS STATE ===== -->
+                <div class="success-state" id="successState" style="display:none;">
+                    <div class="success-animation">
+                        <div class="success-circle">
+                            <i class="ph-fill ph-check-circle"></i>
+                        </div>
+                    </div>
+                    <h2 class="success-title">Submission Successful!</h2>
+                    <p class="success-subtitle">Your e-waste drop-off has been registered.</p>
+
+                    <div class="success-id-card">
+                        <span class="success-id-label">Your Submission ID</span>
+                        <span class="success-id-value" id="successSubmissionId">—</span>
+                        <button class="success-copy-btn" id="copySubmissionId" title="Copy to clipboard">
+                            <i class="ph-bold ph-copy"></i>
+                        </button>
+                    </div>
+
+                    <div class="success-summary">
+                        <div class="success-stat">
+                            <i class="ph-fill ph-cloud" style="color: var(--green);"></i>
+                            <span id="successCO2">—</span>
+                            <small>CO₂ Offset</small>
+                        </div>
+                        <div class="success-stat">
+                            <i class="ph-fill ph-coins" style="color: var(--teal);"></i>
+                            <span id="successPoints">—</span>
+                            <small>Reward Points</small>
+                        </div>
+                        <div class="success-stat">
+                            <i class="ph-fill ph-recycle" style="color: #eab308;"></i>
+                            <span id="successBin">—</span>
+                            <small>Bin Assignment</small>
+                        </div>
+                    </div>
+
+                    <div class="success-actions">
+                        <button class="btn-primary" id="submitAnother">
+                            <i class="ph-bold ph-plus-circle"></i>
+                            Submit Another
+                        </button>
+                        <a href="index.html" class="btn-secondary">
+                            <i class="ph-bold ph-house"></i>
+                            Back to Home
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer footer--minimal" role="contentinfo">
+        <div class="container">
+            <div class="footer-bottom" style="border-top:none; padding-top:0;">
+                <p class="footer-copyright">
+                    Developed by <strong>Hardik Agrawal</strong>
+                </p>
+                <div class="footer-social">
+                    <a href="https://github.com/HardikAgrawal8972" target="_blank" rel="noopener noreferrer"
+                        aria-label="GitHub"><i class="ph-fill ph-github-logo"></i></a>
+                    <a href="https://www.linkedin.com/in/hardik-agrawal-802641317/" target="_blank"
+                        rel="noopener noreferrer" aria-label="LinkedIn"><i class="ph-fill ph-linkedin-logo"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="submit.js"></script>
+</body>
+
+</html>

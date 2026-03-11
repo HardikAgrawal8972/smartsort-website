@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard — SmartSort</title>
+    <meta name="description" content="SmartSort admin dashboard for managing e-waste submissions and analytics." />
+    <meta name="robots" content="noindex, nofollow" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web@2.0.3"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+    <!-- ==================== NAVIGATION ==================== -->
+    <nav class="navbar scrolled" id="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <a href="index.html" class="nav-logo" aria-label="SmartSort Home">
+                <span class="nav-logo-icon"><i class="ph-fill ph-recycle"></i></span>
+                SmartSort
+            </a>
+
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="submit.html">Submit E-Waste</a>
+                <span class="admin-badge-nav">
+                    <i class="ph-fill ph-shield-check"></i> Admin
+                </span>
+            </div>
+
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ==================== ADMIN LOGIN ==================== -->
+    <section class="admin-login-section" id="adminLogin">
+        <div class="submit-bg-grid"></div>
+        <div class="submit-orb submit-orb--green"></div>
+        <div class="submit-orb submit-orb--teal"></div>
+
+        <div class="container">
+            <div class="admin-login-card">
+                <div class="admin-login-icon">
+                    <i class="ph-fill ph-shield-check"></i>
+                </div>
+                <h1 class="admin-login-title">Admin Access</h1>
+                <p class="admin-login-subtitle">Enter the admin password to access the dashboard.</p>
+
+                <div class="form-group" style="margin-top: 1.5rem;">
+                    <div class="input-wrapper">
+                        <i class="ph ph-lock-key input-icon"></i>
+                        <input type="password" id="adminPassword" placeholder="Enter admin password"
+                            autocomplete="off" />
+                    </div>
+                    <span class="form-error" id="loginError"></span>
+                </div>
+
+                <button class="btn-primary" id="adminLoginBtn"
+                    style="width:100%; margin-top:1rem; justify-content:center;">
+                    <i class="ph-bold ph-sign-in"></i>
+                    Access Dashboard
+                </button>
+
+                <!-- NOTE: Replace this hardcoded password with proper Firebase Auth or similar -->
+                <!-- Current password is "smartsort2024" for demo purposes -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== ADMIN DASHBOARD ==================== -->
+    <section class="admin-dashboard" id="adminDashboard" style="display:none;">
+        <div class="container">
+
+            <!-- Dashboard Header -->
+            <div class="admin-header">
+                <div>
+                    <h1 class="admin-title">
+                        <i class="ph-fill ph-chart-bar"></i>
+                        Dashboard
+                    </h1>
+                    <p class="admin-subtitle">Overview of all e-waste submissions</p>
+                </div>
+                <div class="admin-header-actions">
+                    <button class="btn-secondary btn-sm" id="refreshBtn">
+                        <i class="ph-bold ph-arrows-clockwise"></i>
+                        Refresh
+                    </button>
+                    <button class="btn-primary btn-sm" id="exportCSVBtn">
+                        <i class="ph-bold ph-file-csv"></i>
+                        Export CSV
+                    </button>
+                    <button class="btn-logout" id="logoutBtn" title="Logout">
+                        <i class="ph-bold ph-sign-out"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Summary Stats -->
+            <div class="admin-stats-grid" id="statsGrid">
+                <div class="admin-stat-card">
+                    <div class="admin-stat-icon admin-stat-icon--green">
+                        <i class="ph-fill ph-package"></i>
+                    </div>
+                    <div>
+                        <span class="admin-stat-value" id="statTotalSubmissions">0</span>
+                        <span class="admin-stat-label">Total Submissions</span>
+                    </div>
+                </div>
+                <div class="admin-stat-card">
+                    <div class="admin-stat-icon admin-stat-icon--teal">
+                        <i class="ph-fill ph-scales"></i>
+                    </div>
+                    <div>
+                        <span class="admin-stat-value" id="statTotalWeight">0 kg</span>
+                        <span class="admin-stat-label">Total Weight</span>
+                    </div>
+                </div>
+                <div class="admin-stat-card">
+                    <div class="admin-stat-icon admin-stat-icon--green">
+                        <i class="ph-fill ph-cloud"></i>
+                    </div>
+                    <div>
+                        <span class="admin-stat-value" id="statTotalCO2">0 kg</span>
+                        <span class="admin-stat-label">Total CO₂ Offset</span>
+                    </div>
+                </div>
+                <div class="admin-stat-card">
+                    <div class="admin-stat-icon admin-stat-icon--teal">
+                        <i class="ph-fill ph-device-mobile"></i>
+                    </div>
+                    <div>
+                        <span class="admin-stat-value" id="statMostCommon">—</span>
+                        <span class="admin-stat-label">Most Common Device</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="admin-filters" id="filtersSection">
+                <div class="filter-group">
+                    <label for="filterDateFrom">From</label>
+                    <input type="date" id="filterDateFrom" class="filter-input" />
+                </div>
+                <div class="filter-group">
+                    <label for="filterDateTo">To</label>
+                    <input type="date" id="filterDateTo" class="filter-input" />
+                </div>
+                <div class="filter-group">
+                    <label for="filterDeviceType">Device Type</label>
+                    <select id="filterDeviceType" class="filter-input">
+                        <option value="">All Types</option>
+                        <option value="Mobile Phone">Mobile Phone</option>
+                        <option value="Laptop">Laptop</option>
+                        <option value="Tablet">Tablet</option>
+                        <option value="Battery">Battery</option>
+                        <option value="Charger/Cable">Charger/Cable</option>
+                        <option value="PCB / Circuit Board">PCB / Circuit Board</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="filterCity">City</label>
+                    <select id="filterCity" class="filter-input">
+                        <option value="">All Locations</option>
+                        <option value="Mall">Mall</option>
+                        <option value="College">College</option>
+                        <option value="Residential Society">Residential Society</option>
+                        <option value="IT Park">IT Park</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="filterCondition">Condition</label>
+                    <select id="filterCondition" class="filter-input">
+                        <option value="">All Conditions</option>
+                        <option value="Working">Working</option>
+                        <option value="Partially Working">Partially Working</option>
+                        <option value="Not Working">Not Working</option>
+                    </select>
+                </div>
+                <div class="filter-group filter-actions">
+                    <button class="btn-secondary btn-sm" id="applyFilters">
+                        <i class="ph-bold ph-funnel"></i> Apply
+                    </button>
+                    <button class="btn-secondary btn-sm" id="clearFilters">
+                        <i class="ph-bold ph-x"></i> Clear
+                    </button>
+                </div>
+            </div>
+
+            <!-- Data Table -->
+            <div class="admin-table-wrapper" id="tableWrapper">
+                <table class="admin-table" id="submissionsTable">
+                    <thead>
+                        <tr>
+                            <th>Submission ID</th>
+                            <th>Date/Time</th>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>City</th>
+                            <th>Device Type</th>
+                            <th>Brand</th>
+                            <th>Weight (g)</th>
+                            <th>Condition</th>
+                            <th>Bin</th>
+                            <th>CO₂ (kg)</th>
+                            <th>Points</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <!-- Rows injected by JS -->
+                    </tbody>
+                </table>
+
+                <!-- Empty state -->
+                <div class="admin-empty" id="emptyState" style="display:none;">
+                    <i class="ph-duotone ph-clipboard-text" style="font-size:3rem; color: var(--text-muted);"></i>
+                    <h3>No Submissions Yet</h3>
+                    <p>Submissions will appear here once users start dropping off e-waste.</p>
+                    <a href="submit.html" class="btn-primary btn-sm" style="margin-top:1rem;">
+                        <i class="ph-bold ph-plus-circle"></i> Create First Submission
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer footer--minimal" role="contentinfo">
+        <div class="container">
+            <div class="footer-bottom" style="border-top:none; padding-top:0;">
+                <p class="footer-copyright">
+                    Developed by <strong>Hardik Agrawal</strong>
+                </p>
+                <div class="footer-social">
+                    <a href="https://github.com/HardikAgrawal8972" target="_blank" rel="noopener noreferrer"
+                        aria-label="GitHub"><i class="ph-fill ph-github-logo"></i></a>
+                    <a href="https://www.linkedin.com/in/hardik-agrawal-802641317/" target="_blank"
+                        rel="noopener noreferrer" aria-label="LinkedIn"><i class="ph-fill ph-linkedin-logo"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="admin.js"></script>
+</body>
+
+</html>

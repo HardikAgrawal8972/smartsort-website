@@ -217,5 +217,23 @@ document.addEventListener('DOMContentLoaded', () => {
         // Pulse animation is already handled by CSS
     }
 
+    // ---- Floating CTA button visibility ----
+    const floatingCTA = document.getElementById('floatingCTA');
+    const heroSection = document.getElementById('hero');
+
+    if (floatingCTA && heroSection) {
+        const handleFloatingCTA = () => {
+            const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+            if (window.scrollY > heroBottom - 200) {
+                floatingCTA.classList.add('visible');
+            } else {
+                floatingCTA.classList.remove('visible');
+            }
+        };
+
+        window.addEventListener('scroll', handleFloatingCTA, { passive: true });
+        handleFloatingCTA();
+    }
+
     console.log('🌿 SmartSort — Making cities cleaner, one device at a time.');
 });
